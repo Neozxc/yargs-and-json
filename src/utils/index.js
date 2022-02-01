@@ -1,16 +1,21 @@
 const yargs = require("yargs");
 const { hideBin } = require("yargs/helpers");
+const { add, list } = require("../app");
 const argv = yargs(hideBin(process.argv)).argv;
 
 let title = argv.title;
 let actor = argv.actor;
-let year = argv.year;
-
 
 const app = () => {
 
     if (argv.add) {
-        console.log(`Movie ${title} with actor ${actor} added. Was released in: ${year}.`);
+        add(title, actor);
+        console.log(`Movie ${title} with actor ${actor} added.`);
+    } else if (argv.list) {
+        list()
+        // console.log("Testing");
+    } else {
+        console.log("Wrong command!");
     }
 
 };
